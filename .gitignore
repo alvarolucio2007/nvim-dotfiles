@@ -1,0 +1,20 @@
+# Plugins e Lock (Recomendo remover o lock do ignore)
+/lazy/
+
+# Logs e Debug
+*.log
+debug
+foo.*
+
+# Cache e Temporary
+.netrwhist
+*.swp
+*.swo
+
+# Sujeira de Plugins/Testes
+.repro.lua
+.repro
+.tests
+tt.*
+doc/tags
+data/
