@@ -1,17 +1,12 @@
 return {
   -- TREESITTER
-  {
+{
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "go", "lua", "python", "typescript", "tsx", "javascript", "markdown", "html",
-        "proto", -- Já adicione aqui para o seu LSP de Protobuf!
-      },
-    },
+    opts = function(_, opts)
+      -- Adiciona ao que já existe em vez de substituir tudo
+      vim.list_extend(opts.ensure_installed, {
+        "proto",
+      })
+    end,
   },
-
-  -- EXTRAS
-  { import = "lazyvim.plugins.extras.lang.typescript" },
-  { import = "lazyvim.plugins.extras.lang.go" },
-  -- { import = "lazyvim.plugins.extras.lang.tailwind" }, -- Exemplo de expansão futura
 }

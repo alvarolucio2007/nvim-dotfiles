@@ -28,7 +28,7 @@ return {
           FloatBorder = { fg = colors.lavender, bg = "NONE" },
           StatusLine = { bg = "NONE", fg = "NONE", sp = "NONE" },
           StatusLineNC = { bg = "NONE", fg = "NONE", sp = "NONE" },
-          WinSeparator = { fg = "NONE", bg = "NONE" }, 
+          WinSeparator = { fg = "NONE", bg = "NONE" },
           MsgArea = { bg = "NONE" },
           Visual = { bg = colors.surface2, fg = "NONE" },
           LineNr = { fg = colors.overlay1, bg = "NONE" },
