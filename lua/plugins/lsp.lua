@@ -1,21 +1,16 @@
 return {
+  -- VACINA CONTRA O BUG DO LAZYVIM + BLINK
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        buf_ls = {},
         gopls = {
-          settings = {
-            gopls = {
-              -- A hierarquia correta para os Inlay Hints
-              hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
+          capabilities = {
+            textDocument = {
+              semanticTokens = {
+                -- Criamos tabelas vazias para o LazyVim encontrar e não dar erro "nil"
+                tokenTypes = {},
+                tokenModifiers = {},
               },
             },
           },
@@ -23,6 +18,8 @@ return {
       },
     },
   },
+
+  -- MANTER O SEU TREESITTER
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -31,35 +28,6 @@ return {
       end
     end,
   },
-{
-    "mfussenegger/nvim-dap",
-    -- Carrega o plugin assim que abrir um arquivo Go
-    event = "VeryLazy",
-    dependencies = {
-      "leoluz/nvim-dap-go",
-    },
-    config = function()
-      local dap = require("dap")
-      local dapgo = require("dap-go")
 
-      dapgo.setup()
-
-      -- Forçamos a configuração no sistema do DAP
-      dap.configurations.go = {
-        {
-          type = "go",
-          name = "Debug (Main)",
-          request = "launch",
-          program = "${file}",
-        },
-        {
-          type = "go",
-          name = "Debug test",
-          request = "launch",
-          mode = "test",
-          program = "${relativeFileDirname}",
-        },
-      }
-    end,
-  },
+  -- MANTER O SEU DAP INTACTO AQUI...
 }
